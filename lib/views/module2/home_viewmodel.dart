@@ -16,7 +16,6 @@ class HomeViewModel extends BaseViewModel {
   bool value = false;
   bool light = true;
   double currentSliderValue = 20;
-  
 
   List<String> dropdownvalues = List.generate(9, (index) => "TextField");
 
@@ -24,8 +23,13 @@ class HomeViewModel extends BaseViewModel {
 
   void save() {
     results.add(
-        "${dropdownvalues[0]}${dropdownvalues[1]} ${dropdownvalues[2]}${dropdownvalues[3]}${dropdownvalues[4]}${dropdownvalues[5]}${dropdownvalues[6]}${dropdownvalues[7]}${dropdownvalues[8]}");
+        "${dropdownvalues[0]}\n${dropdownvalues[1]}\n ${dropdownvalues[2]}\n${dropdownvalues[3]}\n${dropdownvalues[4]}\n${dropdownvalues[5]}\n${dropdownvalues[6]}\n${dropdownvalues[7]}\n${dropdownvalues[8]}");
+    // results.clear();
+    notifyListeners();
+  }
 
+  void clear() {
+    results.clear();
     notifyListeners();
   }
 }

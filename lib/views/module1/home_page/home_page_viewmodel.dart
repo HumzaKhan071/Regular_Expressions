@@ -13,6 +13,7 @@ class HomePageViewModel extends BaseViewModel {
   TextEditingController get textfield => _textfield;
   void check() {
     results = regExp.allMatches(_textfield.text).toList();
+
     notifyListeners();
   }
 }

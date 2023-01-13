@@ -21,10 +21,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: HomeView(),
-      // navigatorKey: StackedService.navigatorKey,
-      // initialRoute: Routes.homePageView,
-      // onGenerateRoute: StackedRouter().onGenerateRoute,
+      // home: HomeView(),
+      navigatorKey: StackedService.navigatorKey,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
     );
   }
 }

@@ -21,10 +21,16 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Text Field",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
                   Container(
                       height: 40,
-                      width: size.width * 0.4,
-                      padding: const EdgeInsets.only(left: 10, top: 15),
+                      width: size.width * 0.3,
+                      padding: const EdgeInsets.only(left: 10, top: 13),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.grey,
@@ -42,6 +48,12 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Radio Button",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
                   Radio(
                     activeColor: Colors.green,
                     value: 0,
@@ -57,6 +69,12 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Elevated Button",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
                   ElevatedButton(
                       onPressed: () {}, child: Text("ELevatedButton")),
                   customdropDown(viewModel, index: 2),
@@ -65,6 +83,12 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Check Box",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
                   Checkbox(
                     value: viewModel.value,
                     onChanged: (value) {
@@ -78,6 +102,12 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Icon",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
                   Icon(Icons.headphones),
                   customdropDown(viewModel, index: 4),
                 ],
@@ -85,6 +115,12 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Outlined Button",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
                   OutlinedButton(
                       onPressed: () {}, child: Text("OutlinedButton")),
                   customdropDown(viewModel, index: 5),
@@ -93,6 +129,12 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Switch",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
                   Switch(
                     // This bool value toggles the switch.
                     value: viewModel.light,
@@ -109,11 +151,17 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Slider",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
                   Slider(
                     value: viewModel.currentSliderValue,
                     min: 0,
-                    max: 100,
-                    divisions: 5,
+                    max: 50,
+                    divisions: 3,
                     label: viewModel.currentSliderValue.round().toString(),
                     onChanged: (double value) {
                       viewModel.currentSliderValue = value;
@@ -126,20 +174,39 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
-                      onPressed: () {}, child: Text("TextButton")),
+                  Text(
+                    "Text Button",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
+                  TextButton(onPressed: () {}, child: Text("TextButton")),
                   customdropDown(viewModel, index: 8),
                 ],
               ),
-             
+
               const SizedBox(
-                height: 20,
+                height: 13,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    viewModel.save();
-                  },
-                  child: const Text("Save")),
+
+              // Add Button
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      viewModel.save();
+                    },
+                    child: Text("Add"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      viewModel.clear();
+                    },
+                    child: Text("Clear"),
+                  ),
+                ],
+              ),
 
               // Display the results
               Expanded(
@@ -148,7 +215,16 @@ class HomeView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(viewModel.results[index]),
+                      child: Card(
+                        child: ListTile(
+                          title: Text(
+                            viewModel.results[index],
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                        ),
+                      ),
                     );
                   },
                 ),
