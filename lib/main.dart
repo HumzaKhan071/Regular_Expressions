@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:regular_experssion/home_page.dart';
+import 'package:regular_experssion/app/app.router.dart';
+import 'package:regular_experssion/views/module2/home_view.dart';
 
-void main() {
+import 'package:stacked_services/stacked_services.dart';
+
+import 'app/app.locator.dart';
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
   runApp(const MyApp());
 }
 
@@ -14,7 +21,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: HomePage(),
+      home: HomeView(),
+      // navigatorKey: StackedService.navigatorKey,
+      // initialRoute: Routes.homePageView,
+      // onGenerateRoute: StackedRouter().onGenerateRoute,
     );
   }
 }
