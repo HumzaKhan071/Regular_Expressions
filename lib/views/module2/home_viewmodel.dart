@@ -21,6 +21,55 @@ class HomeViewModel extends BaseViewModel {
 
   List<String> results = [];
 
+
+  List<Map> container=[{
+    "title":"TextField",
+    "index":0,
+    "value":"TextField"
+  },
+    {
+      "title":"Radio",
+      "index":1,
+      "value":"Radio"
+    },
+    {
+      "title":"Elevated Button",
+      "index":2,
+      "value":"Elevated Button"
+    },
+    {
+      "title":"Checkbox",
+      "index":3,
+      "value":"Checkbox"
+    },
+    {
+      "title":"Icon",
+      "index":4,
+      "value":"Icon"
+    },
+    {
+      "title":"Outlined Button",
+      "index":5,
+      "value":"Outlined Button"
+    },
+    {
+      "title":"Switch",
+      "index":6,
+      "value":"Switch"
+    },
+    {
+      "title":"Slider",
+      "index":7,
+      "value":"Slider"
+    },
+    {
+      "title":"Text Button",
+      "index":8,
+      "value":"Text Button"
+    },
+  
+  ];
+
   void save() {
     results.add(
         "${dropdownvalues[0]}\n${dropdownvalues[1]}\n ${dropdownvalues[2]}\n${dropdownvalues[3]}\n${dropdownvalues[4]}\n${dropdownvalues[5]}\n${dropdownvalues[6]}\n${dropdownvalues[7]}\n${dropdownvalues[8]}");
@@ -31,5 +80,9 @@ class HomeViewModel extends BaseViewModel {
   void clear() {
     results.clear();
     notifyListeners();
+  }
+
+  void add(){
+
   }
 }
