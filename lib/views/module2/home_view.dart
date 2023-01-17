@@ -18,14 +18,33 @@ class HomeView extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              customContainer(size, viewModel, "Controller", 0),
-              customContainer(size, viewModel, "Controller", 1),
-              customContainer(size, viewModel, "Controller", 2),
-              customContainer(size, viewModel, "Controller", 3),
+              ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: viewModel.containers.length,
+                  itemBuilder: (context, index) {
+                    return customContainer(size, viewModel, "Container", index);
+                  }),
               SizedBox(height: 20),
-              ElevatedButton(onPressed: () {
-                
-              }, child: Text("Add")),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        viewModel.add();
+                      },
+                      child: Text("Add")),
+                  ElevatedButton(
+                      onPressed: () {
+                        viewModel.save();
+                      },
+                      child: Text("Save")),
+                  ElevatedButton(
+                      onPressed: () {
+                        viewModel.clear();
+                      },
+                      child: Text("Clear")),
+                ],
+              ),
               SizedBox(height: 20),
               Expanded(
                   child: ListView.builder(
@@ -34,7 +53,7 @@ class HomeView extends StatelessWidget {
                   return Card(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(viewModel.results[index]),
+                      child: Text(viewModel.results[index].toString()),
                     ),
                   );
                 },
@@ -66,7 +85,8 @@ class HomeView extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
-            child: const TextField(
+            child: TextField(
+              controller: viewModel.controller[index],
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Enter your name',
