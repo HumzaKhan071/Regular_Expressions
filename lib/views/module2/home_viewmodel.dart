@@ -4,14 +4,16 @@ import 'package:stacked/stacked.dart';
 class HomeViewModel extends BaseViewModel {
   var items = [
     'TextField',
-    'Radio',
-    'Elevated Button',
+    'RadioButton',
+    'TextButton',
+    "DropdownButton",
     "Checkbox",
-    "Icon",
-    "Outlined Button",
-    "Switch",
     "Slider",
-    "Text Button"
+    "Tooltip",
+    "Slider",
+    "Drawer",
+    "Text"
+
   ];
   List<String> dropdownvalues = List.generate(20, (index) => "TextField");
 

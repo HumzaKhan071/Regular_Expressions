@@ -22,6 +22,9 @@ class HomePageView extends StatelessWidget {
                 hintText: 'Enter a search term',
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
               onPressed: () {
                 viewModel.check();
@@ -30,6 +33,9 @@ class HomePageView extends StatelessWidget {
                     "results: ${viewModel.results[0].start} ${viewModel.results[0].end}");
               },
               child: const Text('Check'),
+            ),
+            SizedBox(
+              height: 10,
             ),
             Expanded(
               child: ListView.builder(
