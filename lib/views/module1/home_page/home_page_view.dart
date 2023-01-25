@@ -30,16 +30,22 @@ class HomePageView extends StatelessWidget {
               child: const Text('Check'),
             ),
             Expanded(
-              child: ListView.builder(
-                  itemCount: viewModel.results.length,
-                  itemBuilder: ((context, index) {
-                    return ListTile(
-                      title: Text(viewModel.results[index].input.substring(
+                child: ListView.builder(
+                    itemCount: viewModel.results.length,
+                    itemBuilder: (context, index) {
+                      String title = viewModel.results[index].input.substring(
                           viewModel.results[index].start,
-                          viewModel.results[index].end)),
-                    );
-                  })),
-            )
+                          viewModel.results[index].end);
+
+                      return ElevatedButton(
+                        onPressed: () {
+                          viewModel.navigateToView(
+                            title: title,
+                          );
+                        },
+                        child: Text(title),
+                      );
+                    })),
           ],
         ),
       ),

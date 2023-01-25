@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: viewModel.containers.length,
                   itemBuilder: (context, index) {
-                    return customContainer(size, viewModel, "Container", index);
+                    return customContainer(size, viewModel, "Controller", index);
                   }),
               SizedBox(height: 20),
               Row(

@@ -5,14 +5,17 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/material.dart' as _i6;
 import 'package:flutter/material.dart';
 import 'package:regular_experssion/views/main_screen/main_screen_view.dart'
     as _i2;
 import 'package:regular_experssion/views/module1/home_page/home_page_view.dart'
     as _i3;
+import 'package:regular_experssion/views/module1/home_page/view/view.dart'
+    as _i5;
 import 'package:regular_experssion/views/module2/home_view.dart' as _i4;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i5;
+import 'package:stacked_services/stacked_services.dart' as _i7;
 
 class Routes {
   static const mainScreenView = '/';
@@ -21,10 +24,13 @@ class Routes {
 
   static const homeView = '/home-view';
 
+  static const view = '/View';
+
   static const all = <String>{
     mainScreenView,
     homePageView,
     homeView,
+    view,
   };
 }
 
@@ -41,6 +47,10 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.homeView,
       page: _i4.HomeView,
+    ),
+    _i1.RouteDef(
+      Routes.view,
+      page: _i5.View,
     ),
   ];
 
@@ -63,6 +73,13 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
+    _i5.View: (data) {
+      final args = data.getArgs<ViewArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => _i5.View(key: args.key, title: args.title),
+        settings: data,
+      );
+    },
   };
 
   @override
@@ -71,7 +88,18 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i5.NavigationService {
+class ViewArguments {
+  const ViewArguments({
+    this.key,
+    required this.title,
+  });
+
+  final _i6.Key? key;
+
+  final String title;
+}
+
+extension NavigatorStateExtension on _i7.NavigationService {
   Future<dynamic> navigateToMainScreenView([
     int? routerId,
     bool preventDuplicates = true,
@@ -114,6 +142,23 @@ extension NavigatorStateExtension on _i5.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToView({
+    _i6.Key? key,
+    required String title,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.view,
+        arguments: ViewArguments(key: key, title: title),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithMainScreenView([
     int? routerId,
     bool preventDuplicates = true,
@@ -150,6 +195,23 @@ extension NavigatorStateExtension on _i5.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithView({
+    _i6.Key? key,
+    required String title,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.view,
+        arguments: ViewArguments(key: key, title: title),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
