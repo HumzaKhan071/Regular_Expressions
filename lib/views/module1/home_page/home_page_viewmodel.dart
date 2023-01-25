@@ -8,7 +8,7 @@ class HomePageViewModel extends BaseViewModel {
   final TextEditingController _textfield = TextEditingController();
   NavigationService navigationService = locator<NavigationService>();
   RegExp regExp = RegExp(
-    "(TextField|ElevatedButton|Text|RadioButton|TextButton|Dropdown|Checkbox|Slider|Tooltip|Drawer)",
+    "(Text|TextField|RadioButton|TextButton|DropdownButton|Checkbox|Slider|Tooltip|Drawer)",
   );
 
   List<RegExpMatch> results = [];

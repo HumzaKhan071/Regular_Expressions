@@ -39,27 +39,33 @@ class View extends StatelessWidget {
                 Expanded(
                   child: TabBarView(children: [
                     ListView.builder(
-                        itemCount: viewModel.textDataDriven.length,
+                        itemCount:
+                            viewModel.result[title]!["DataDriven"]!.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(viewModel.textDataDriven[index]),
+                            child: Text(
+                                viewModel.result[title]!["DataDriven"]![index]),
                           );
                         }),
                     ListView.builder(
-                        itemCount: viewModel.textStepDriven.length,
+                        itemCount:
+                            viewModel.result[title]!["StepDriven"]!.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(viewModel.textStepDriven[index]),
+                            child: Text(
+                                viewModel.result[title]!["StepDriven"]![index]),
                           );
                         }),
                     ListView.builder(
-                        itemCount: viewModel.textGuidelineDriven.length,
+                        itemCount:
+                            viewModel.result[title]!["GuidelineDriven"]!.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(viewModel.textGuidelineDriven[index]),
+                            child: Text(viewModel
+                                .result[title]!["GuidelineDriven"]![index]),
                           );
                         }),
                   ]),
