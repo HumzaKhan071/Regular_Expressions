@@ -26,26 +26,29 @@ class HomePageView extends StatelessWidget {
               onPressed: () {
                 viewModel.check();
                 viewModel.textfield.clear();
+                print(
+                    "results: ${viewModel.results[0].start} ${viewModel.results[0].end}");
               },
               child: const Text('Check'),
             ),
             Expanded(
-                child: ListView.builder(
-                    itemCount: viewModel.results.length,
-                    itemBuilder: (context, index) {
-                      String title = viewModel.results[index].input.substring(
+              child: ListView.builder(
+                  itemCount: viewModel.results.length,
+                  itemBuilder: ((context, index) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        viewModel.navigateToView(
+                          title: viewModel.results[index].input.substring(
+                              viewModel.results[index].start,
+                              viewModel.results[index].end),
+                        );
+                      },
+                      child: Text(viewModel.results[index].input.substring(
                           viewModel.results[index].start,
-                          viewModel.results[index].end);
-
-                      return ElevatedButton(
-                        onPressed: () {
-                          viewModel.navigateToView(
-                            title: title,
-                          );
-                        },
-                        child: Text(title),
-                      );
-                    })),
+                          viewModel.results[index].end)),
+                    );
+                  })),
+            )
           ],
         ),
       ),
